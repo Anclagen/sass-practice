@@ -1,4 +1,24 @@
 {
+  "name": "sass-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass src/styles/scss:src/styles/css",
+    "watch": "sass --watch src/styles/scss:src/styles/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anclagen/sass-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anclagen/sass-practice/issues"
+  },
+  "homepage": "https://github.com/Anclagen/sass-practice#readme",
   "devDependencies": {
     "sass": "^1.54.5"
   }
