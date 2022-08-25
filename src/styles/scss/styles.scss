@@ -1,0 +1,261 @@
+@use "./_variables";
+
+//reusable using @include name(); can include parameters
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin reset-link {
+  text-decoration: none;
+  //color: map-get($colours: dark, $key:);
+}
+
+@mixin display-flex($direction, $alignment, $wrap) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+//general rules 
+body{
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+//text
+.text-center{
+  text-align: center;
+}
+
+//borders
+
+.border{
+  border: 0.125rem solid black;
+}
+
+//colours
+@function getColour($colour) {
+  @return map-get(variables.$colours, $colour);
+}
+
+
+@each $name, $colour in variables.$colours {
+  .text-#{$name}{
+    color: $colour;
+  }
+
+  .bg-#{$name}{
+    background-color: $colour;
+  }
+
+  .border-#{$name}{
+    border-color: $colour;
+  }
+}
+
+// margin and padding
+@each $number, $value in variables.$spacing {
+  .p-#{$number}{
+    padding: $value;
+  }
+  .pb-#{$number}{
+    padding-bottom: $value;
+  }
+  .pt-#{$number}{
+    padding-top: $value;
+  } 
+  .ps-#{$number}{
+    padding-left: $value;
+  }
+  .pe-#{$number}{
+    padding-right: $value;
+  }
+  .px-#{$number}{
+    padding: 0 $value;
+  } 
+  .py-#{$number}{
+    padding: $value 0;
+  }
+  .m-#{$number}{
+    margin: $value;
+  }
+  .mb-#{$number}{
+    margin-bottom: $value;
+  }
+  .mt-#{$number}{
+    margin-top: $value;
+  } 
+  .ms-#{$number}{
+    margin-left: $value;
+  }
+  .me-#{$number}{
+    margin-right: $value;
+  }
+  .mx-#{$number}{
+    margin: 0 $value;
+  } 
+  .my-#{$number}{
+    margin: $value 0;
+  }
+}
+
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-auto{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+//containers
+@function getSize($size) {
+  @return map-get(variables.$max-widths, $size);
+}
+
+.container-xxl {
+  width: 100%;
+  max-width: getSize(xxl);
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+//flex
+
+.row{
+  @include display-flex(row, flex-start,wrap);
+}
+
+.col{
+  flex: 1 0 0%;
+}
+
+//cards
+.card {
+  @include display-flex(column, flex-start,nowrap);
+  word-wrap: break-word;
+  margin: 1rem;
+  border: 0.125rem solid getColour(info);
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+  width: 100%;
+}
+
+.shadow {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.rounded{
+  border-radius: 0.5rem;
+}
+//accordion
+.accordion-button{
+  border: 0.125rem solid getColour(dark);
+  width: 100%;
+  padding: 1rem;
+
+
+}
+
+.accordion-button:not(.collapsed) {
+  border: 0.25rem solid getColour(info);
+}
+
+.accordion-item:first-of-type .accordion-button {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.accordion-header {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.accordion-body{
+  padding: 1rem;
+  p{
+    margin: 0;
+  }
+}
+
+.accordion-collapse {
+  border-left: 0.125rem solid getColour(dark);
+  border-right: 0.125rem solid getColour(dark);
+  background-color: getColour(light);
+}
+
+.collapse:not(.show) {
+  display: none;
+}
+
+//nav bar
+
+.navbar {
+  li,
+  ul{
+    @include reset-list();
+  }
+}
+
+
+@media (min-width: 992px){
+  .navbar-expand-lg {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row;}
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+  justify-content: center;
+
+  .container-xxl {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;}
+}
+
+.navbar-toggler-icon{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 1.5rem;
+  height: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+  
+
+.fade {
+  display: none;
+  .show{
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+//root variables
+$colours: (
+  "primary": #241c8f,
+  "secondary": #888888,
+  "success":   #0e8a29,
+  "info":       #22989c,
+  "warning":    #b68832,
+  "danger":     #9c0606,
+  "light":      #ccccc6,
+  "dark":       #222222
+);
+
+$spacing: (
+  "0": 0rem,
+  "1": 0.25rem,
+  "2": 0.5rem,
+  "3": 1rem,
+  "4": 1.5rem,
+  "5": 2.25rem,
+);
+
+$max-widths: (
+  "sm": 540px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1140px,
+  "xxl": 1320px,
+  "fluid": 100%,
+);
